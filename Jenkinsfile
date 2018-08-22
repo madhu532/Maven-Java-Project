@@ -40,6 +40,7 @@ node {
              sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@10.10.2.254:opt/apache-tomcat-8.0.53/webapps'
        }
     }
+    }
     catch (err) {
          currentBuild.result = "FAILURE"
 	    /* mail body: "project build error is here: ${env.BUILD_URL}" ,
