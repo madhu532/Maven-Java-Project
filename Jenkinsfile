@@ -16,7 +16,7 @@ node {
 
        stage('Compiling'){
 
-          sh 'mvn clean install'
+          sh 'mvn clean deploy'
        }
 	   
 	    
@@ -35,6 +35,12 @@ node {
                      subject: 'project build successful',
                      to: 'mithunreddytechnologies@gmail.com'
        }*/
+	    stage('Deploy-To-Tomcat'){
+        
+         sshagent(['00a60540-6fd0-4533-ae6e-3aee64dc06c0']) {
+           sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.14.4:/opt/apache-tomcat-8.0.53/webapps'
+       }
+		    
 	    
 	    
 
