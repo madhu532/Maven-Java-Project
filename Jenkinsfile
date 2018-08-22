@@ -36,16 +36,13 @@ node {
                      to: 'mithunreddytechnologies@gmail.com'
        }*/
 	    stage('Deploy-To-Tomcat'){
-        
-         sshagent(['tomcat']) {
-           sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@10.10.2.254:opt/apache-tomcat-8.0.53/webapps'
+             sshagent(['tomcat']) {
+             sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@10.10.2.254:opt/apache-tomcat-8.0.53/webapps'
        }
     }
     catch (err) {
-
-        currentBuild.result = "FAILURE"
-
-           /* mail body: "project build error is here: ${env.BUILD_URL}" ,
+         currentBuild.result = "FAILURE"
+	    /* mail body: "project build error is here: ${env.BUILD_URL}" ,
             from: 'devopstrainingblr@gmail.com',
             replyTo: 'mithunreddytechnologies@gmail.com',
             subject: 'project build failed',
