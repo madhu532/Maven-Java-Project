@@ -5,7 +5,7 @@
 
   <groupId>com.mt</groupId>
   <artifactId>maven-java-project</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>Maven Web Project</name>
   <description>Maven java Project for Java</description>
